@@ -17,15 +17,27 @@ const App = () => html`
       <button onclick="doFetchSlow()">Click Me (slow)</button>
       <button onclick="doFetchFast()">Click Me (fast)</button>
       <script>
+        const controller = new AbortController();
+
         async function doFetchSlow() {
-          await fetch("/api/slow", { credentials: "include" });
+          await fetch("/api/slow", {
+            credentials: "include",
+            signal: controller.signal,
+          });
           console.log("DONE slow request");
         }
 
         async function doFetchFast() {
-          await fetch("/api/fast", { credentials: "include" });
+          await fetch("/api/fast", {
+            credentials: "include",
+            signal: controller.signal,
+          });
           console.log("DONE fast request");
         }
+
+        window.addEventListener("beforeunload", () => {
+          controller.abort();
+        });
       </script>
     </body>
   </html>
