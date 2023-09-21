@@ -1,13 +1,11 @@
 {
   "name": "js-fetch-timeout",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "dev": "tsx watch src/index.tsx"
   },
-  "keywords": [],
-  "author": "",
+  "packageManager": "pnpm@8.7.4",
   "license": "ISC",
   "dependencies": {
     "@hono/node-server": "^1.2.0",
