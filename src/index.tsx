@@ -73,4 +73,6 @@ app.get("/api/slow", async (c) => {
   return c.json({ ok: true, wait: 10_000 });
 });
 
-serve(app);
+serve(app, (info) => {
+  console.log(`Listening on http://localhost:${info.port}`);
+});
